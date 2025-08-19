@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="shortcut icon" href="imgs/check.png" type="image/x-icon">
+    <title>Lista de entretenimento.</title>
+</head>
+
+<body>
+    <div class="container">
+        <main id="main">
+            <h1>Lista de entretenimento.</h1>
+            <div id="input">
+                <input type="text" id="inputTitulo" placeholder="Título" required maxlength="22">
+                <input type="text" id="inputDescricao" placeholder="Descrição" required maxlength="30   ">
+                <input type="file" id="inputImagem" accept="image/*" required style="
+                border-radius: 10px 10px 0px 0px
+                ;">
+
+                <div class="button-section">
+                    <button onclick="adicionarLista(1)">
+                        <span class="material-symbols-outlined">add</span>
+                    </button>
+                    <button onclick="adicionarLista(2)" style="border-radius: 0px;">
+                        <span class="material-symbols-outlined">add</span>
+                    </button>
+                    <button onclick="adicionarLista(3)" style="
+                    border-radius: 0px 0px 20px 0px
+                    ;">
+                        <span class="material-symbols-outlined">add</span>
+                    </button>
+                </div>
+            </div>
+
+            <hr id="div-line">
+
+            <div class="tarefa" style="display: flex; gap: 10px;">
+                <ul id="lista1" class="listas">
+                    <h2>Filmes</h2>
+                </ul>
+                <ul id="lista2" class="listas">
+                    <h2>Animes</h2>
+                </ul>
+                <ul id="lista3" class="listas">
+                    <h2>Séries </h2>
+                </ul>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function adicionarLista(numero) {
+            const titulo = document.getElementById('inputTitulo').value.trim();
+            const descricao = document.getElementById('inputDescricao').value.trim();
+            const imagemInput = document.getElementById('inputImagem');
+            const imagemArquivo = imagemInput.files[0];
+
+            if (titulo !== "" && descricao !== "" && imagemInput != "") {
+                const li = document.createElement('li');
+
+                const h3 = document.createElement('h3');
+                h3.textContent = titulo;
+
+                const p = document.createElement('p');
+                p.textContent = descricao;
+
+                const btnRemover = document.createElement('button');
+                btnRemover.setAttribute("class", "material-symbols-outlined");
+                btnRemover.innerHTML = 'delete';
+                btnRemover.onclick = function () {
+                    li.remove();
+                };
+
+                const btnCheck = document.createElement('button');
+                btnCheck.setAttribute("class", "material-symbols-outlined");
+                btnCheck.innerHTML = 'check_circle';
+                btnCheck.onclick = function () {
+                    li.style.textDecoration = "line-through";
+                };
+
+                li.appendChild(h3);
+
+                if (imagemArquivo) {
+                    const leitor = new FileReader();
+                    leitor.onload = function (e) {
+                        const img = document.createElement('img');
+                        img.style.display = "block";
+                        img.style.borderRadius = "10px"
+                        img.src = e.target.result;
+                        img.alt = titulo;
+                        img.style.width = '100%';
+                        img.style.height = '160px';
+                        img.style.objectFit = 'cover';
+
+                        li.insertBefore(img, li.firstChild);
+                    };
+                    leitor.readAsDataURL(imagemArquivo);
+                }
+
+                li.appendChild(p);
+
+                if (numero === 1) {
+                    document.getElementById('lista1').appendChild(li);
+                } else if (numero === 2) {
+                    document.getElementById('lista2').appendChild(li);
+                } else if (numero === 3) {
+                    document.getElementById('lista3').appendChild(li);
+                }
+
+                li.appendChild(btnRemover);
+                li.appendChild(btnCheck);
+                const br = document.createElement("br");
+                li.appendChild(br);
+                li.style.marginTop = "50px"
+
+                document.getElementById('inputTitulo').value = '';
+                document.getElementById('inputDescricao').value = '';
+                imagemInput.value = '';
+            }
+        }
+    </script>
+</body>
+
+</html>

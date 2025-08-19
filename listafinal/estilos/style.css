@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+:root {
+    --font: "DM Sans", sans-serif;
+
+    --cor-1: #7F9BB0;
+    --cor-2: #778087;
+    --cor-3: #79B1DB;
+    --cor-4: #45525C;
+    --cor-5: #1E2A33;
+    --cor-6: #152633;
+    --cor-7: #0c151d;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font);
+    background-image: linear-gradient(to left, var(--cor-4), var(--cor-6));
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+main {
+    width: 700px;
+    text-align: center;
+    background-color: white;
+    margin: auto;
+    margin-top: 60px;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.26);
+}
+
+h1 {
+    color: var(--cor-6);
+    text-align: left;
+    font-size: 2.4em;
+    margin-bottom: 5px;
+}
+
+input {
+    background-color: #0c151d;
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    color: var(--cor-1);
+
+}
+
+input:focus {
+    border: 0px;
+    outline: none;
+    color: var(--cor-1);
+}
+
+input::placeholder {
+    padding-left: 1px;
+    font-size: 1.2em;
+    color: var(--cor-1);
+}
+button {
+    padding: 10px;
+    display: block;
+    width: 50%;
+    margin-top: 5px;
+    border-radius: 30px 5px 5px 30px;
+    margin-left: 2px;
+    background-color: white;
+    transition: 0.5s ease-in-out;
+
+    
+}
+#but2 {
+    border-radius: 5px 30px 30px 5px;
+    border-radius: 0px 40px 40px 0px;
+    transition: 0.5s ease-in-out;
+}
+button:hover {
+    background-color: rgb(107, 107, 107);
+    color: white;
+}
+.button-section {
+    display: flex;
+    flex-flow: row;
+}
+span {
+    background-color: white;
+    color: var(--cor-2);
+    border-radius: 0px 40px 40px 0px;
+    transition: 0.5s ease-in-out;
+}
+
+span:hover {
+    background-color: rgb(107, 107, 107);
+    color: black;
+}
+
+/* ------------ */
+
+#div-line {
+
+    width: 450px;
+    height: 1px;
+    margin: 40px auto;
+    margin-top: 45px;
+    margin-bottom: 20px;
+    background-color: #4e4e4e;
+}
+
+/* ------------ */
+
+
+/* ----------- */
+
+.tarefa {
+    background-color: var(--cor-7);
+    width: 80%;
+    margin: auto;
+    color: var(--cor-1);
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    border-radius: 40px;
+}
+
+.tarefa p {
+    font-size: 1.3em;
+}
+
+.tarefa span {
+    font-size: 2.2em;
+    margin-left: 10px;
+    transition: 0.5s ease-in-out;
+}
+
+
+.tarefa span:hover {
+    cursor: pointer;
+    color: var(--cor-4);
+}
+
+
+/* .tarefa a {
+    text-decoration: none;
+    color: var(--cor-1);
+
+} */
